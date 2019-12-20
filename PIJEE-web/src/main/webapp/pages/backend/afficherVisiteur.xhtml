@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template-admin.xhtml">
+	<ui:param name="TousLesvisiteurs" value="visiteurs" />
+	<ui:define name="content">
+		<h:panelGroup columns="2">
+			
+			<br />
+			<br />
+			<h:form>
+				
+				<br />
+				<br />
+				<h:dataTable value="#{visiteurBean.visiteurs}" var="visiteur" border="1"
+					class="table table-bordered table-striped">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Username" />
+						</f:facet>
+						<h:outputText value="#{visiteur.username}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="First Name" />
+						</f:facet>
+						<h:outputText value="#{visiteur.firstName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Last Name" />
+						</f:facet>
+						<h:outputText value="#{visiteur.lastName}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
+						<h:outputText value="#{visiteur.email}" />
+					</h:column>
+					
+					
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

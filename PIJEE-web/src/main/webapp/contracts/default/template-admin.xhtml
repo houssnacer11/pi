@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"     
+      xmlns:jsf="http://xmlns.jcp.org/jsf"    
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"     
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">    
+    <h:head>
+
+        <ui:include src="/WEB-INF/layout/header_main.xhtml"/>     
+    </h:head>
+    <h:body>
+        
+                     <style>
+                     
+                    .ds-btn li{ list-style:none; float:left; padding:10px; }
+                    .ds-btn li a span{padding-left:15px;padding-right:5px;width:100%;display:inline-block; text-align:left;}
+                    .ds-btn li a span small{width:100%; display:inline-block; text-align:left;}
+                </style>
+                    <br/>
+                    <div class="container">
+                        <div class="row">
+                        
+                          <h3>Bienvenue Mr. #{loginBean.firstname}</h3>  
+                          <h:form>
+							<h:commandButton value="Logout" class="btn btn-primary " tabindex="7" action="#{loginBean.doLogout()}" />   
+						</h:form>
+                         <ul class="ds-btn">
+                            <br/>
+                                                        <br/>
+                            
+                                                        <br/>
+                            
+                            <c:choose>
+							<c:when test="#{loginBean.onRole=='ADMINISTRATEUR'}">
+                                <li>
+                                    <a class="btn btn-lg btn-info " href="/PIJEE-web/pages/backend/afficherEmploye.jsf">
+                                        <i class="glyphicon glyphicon-dashboard pull-left"></i><span>Administrateur<br/><small>Gestion Employe</small></span></a> 
+
+                                </li>
+                                
+                                <li>
+                                    <a class="btn btn-lg btn-primary" href="/PIJEE-web/pages/backend/afficherVisiteur.jsf">
+                                        <i class="glyphicon glyphicon-user pull-left"></i><span>Employe<br/><small>Gestion Visiteur</small></span></a> 
+
+                                </li>
+                                <li>
+                                    <a class="btn btn-lg btn-success " href="/PIJEE-web/pages/backend/afficherRendezVous.jsf">
+                                        <i class="glyphicon glyphicon-dashboard pull-left"></i><span>Employe<br/><small>Gestion Rendez-Vous</small></span></a> 
+
+                                </li>
+                                
+                                <li>
+                                    <a class="btn btn-lg btn-warning" href="/PIJEE-web/pages/backend/afficherImmobilier.jsf">
+                                        <i class="glyphicon glyphicon-search pull-left"></i><span>Employe<br/><small>Gestion Immobilier</small></span></a> 
+                                </li>
+                                </c:when>
+							<c:when test="#{loginBean.onRole=='EMPLOYE'}">
+							
+							<li>
+                                    <a class="btn btn-lg btn-primary" href="/PIJEE-web/pages/backend/afficherVisiteur.jsf">
+                                        <i class="glyphicon glyphicon-user pull-left"></i><span>Employe<br/><small>Gestion Visiteur</small></span></a> 
+
+                                </li>
+                                <li>
+                                    <a class="btn btn-lg btn-success " href="/PIJEE-web/pages/backend/afficherRendezVous.jsf">
+                                        <i class="glyphicon glyphicon-dashboard pull-left"></i><span>Employe<br/><small>Gestion Rendez-Vous</small></span></a> 
+
+                                </li>
+                                
+                                <li>
+                                    <a class="btn btn-lg btn-warning" href="/PIJEE-web/pages/backend/afficherImmobilier.jsf">
+                                        <i class="glyphicon glyphicon-search pull-left"></i><span>Employe<br/><small>Gestion Immobilier</small></span></a> 
+                                </li>
+                                          </c:when>
+                                          </c:choose>                   
+                            </ul>
+                            
+                        </div><!-- /.container -->
+                    </div><!-- /.container -->
+                
+        
+        <ui:insert name="content"></ui:insert> 
+       
+        
+       
+        <div class="container">
+            <ui:insert name="footer"></ui:insert> 
+            <hr/>
+            <ui:include src="/WEB-INF/layout/footer.xhtml"/> 
+        </div><!-- /.container -->
+        <ui:include src="/WEB-INF/layout/footer_includes.xhtml"/>   
+    </h:body>
+</html>
+

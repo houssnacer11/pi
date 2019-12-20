@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template-admin.xhtml">
+	<ui:param name="TousLesemployes" value="employes" />
+	<ui:define name="content">
+		<h:panelGroup columns="2">
+			
+			<br />
+			<br />
+			<h:form>
+				<h:commandButton id="btn25555" value="Ajouter un Employé"
+					action="#{employeBean.addEmployePage()}" styleClass="btn btn-default" />
+					<h:commandButton id="btn555" value="Exporter PDF"
+					action="#{employeBean.pdfPage()}" styleClass="btn btn-default" />
+				<br />
+				<br />
+				<h:dataTable value="#{employeBean.employes}" var="employe" border="1"
+					class="table table-bordered table-striped">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Username" />
+						</f:facet>
+						<h:outputText value="#{employe.username}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="First Name" />
+						</f:facet>
+						<h:outputText value="#{employe.firstName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Last Name" />
+						</f:facet>
+						<h:outputText value="#{employe.lastName}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
+						<h:outputText value="#{employe.email}" />
+					</h:column>
+					
+					<h:column>
+					<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton id="btn2555" value="Modifier"
+							action="#{employeBean.modifEmployePage(employe)}" >
+							</h:commandButton>
+					
+						<h:commandButton id="btn255" value="Supprimer"
+							action="#{employeBean.suppEmploye(employe.id_employe)}" >
+							</h:commandButton>
+					</h:column>
+					
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

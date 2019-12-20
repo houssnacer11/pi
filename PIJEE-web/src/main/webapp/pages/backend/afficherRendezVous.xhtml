@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template-admin.xhtml">
+	<ui:param name="TousLesRdvs" value="rdvs" />
+	<ui:define name="content">
+		<h:panelGroup columns="2">
+			
+			<br />
+			<br />
+			<h:form>
+				
+				<h:dataTable value="#{rdvBean.rdvs}" var="rdv" border="1"
+					class="table table-bordered table-striped">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Visiteur" />
+						</f:facet>
+						<h:outputText value="#{rdv.visiteur.firstName} #{rdv.visiteur.lastName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Catégorie" />
+						</f:facet>
+						<h:outputText value="#{rdv.immobilier.categorie}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Intitulé" />
+						</f:facet>
+						<h:outputText value="#{rdv.immobilier.intitule}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Date Rendez-Vous" />
+						</f:facet>
+						<h:outputText value="#{rdv.date_rdv}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Message" />
+						</f:facet>
+						<h:outputText value="#{rdv.message}" />
+					</h:column>
+					
+					<h:column>
+					<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton id="btn2555" value="Prise en charge"
+							action="#{rdvBean.affecterRdv(loginBean.id_login,rdv.id_rdv)}" >
+							</h:commandButton>
+							
+							<h:commandButton id="btn255" value="Décliner"
+							action="#{rdvBean.suppRdv(rdv.id_rdv)}" >
+							</h:commandButton>
+					
+					</h:column>
+					
+				</h:dataTable>
+			</h:form>
+			
+			<hr />
+			
+			<br />
+			<br />
+			<h:form>
+				
+				<h:dataTable value="#{rdvBean.rdvs_emp}" var="rdve" border="1"
+					class="table table-bordered table-striped">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Employe" />
+						</f:facet>
+						<h:outputText value="#{rdve.employe.firstName} #{rdv.employe.lastName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Visiteur" />
+						</f:facet>
+						<h:outputText value="#{rdve.visiteur.firstName} #{rdve.visiteur.lastName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Catégorie" />
+						</f:facet>
+						<h:outputText value="#{rdve.immobilier.categorie}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Intitulé" />
+						</f:facet>
+						<h:outputText value="#{rdve.immobilier.intitule}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Date Rendez-Vous" />
+						</f:facet>
+						<h:outputText value="#{rdve.date_rdv}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Message" />
+						</f:facet>
+						<h:outputText value="#{rdve.message}" />
+					</h:column>
+					
+					
+					
+				</h:dataTable>
+					
+				
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

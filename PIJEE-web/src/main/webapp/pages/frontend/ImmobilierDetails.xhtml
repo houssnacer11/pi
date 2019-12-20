@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"     
+      xmlns:jsf="http://xmlns.jcp.org/jsf"    
+      xmlns:passthrough="http://xmlns.jcp.org/jsf/passthrough"     
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+    <h:body>
+        <f:view contracts="default" transient="false">
+            <ui:composition template="/template.xhtml">               
+                <ui:define name="content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <br/>
+                                <br/>
+                                <ol class="breadcrumb">
+                                  <li><a href="#{request.contextPath}/index.jsf">List Catalog</a></li>
+                                    <li class="active">Details</li>
+                                </ol>
+                            </div>
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <img class="img-responsive" src="#{request.contextPath}/resources/image/#{immobilierBean.categorie}.jpg"/>
+                            </div>
+                        </div><!-- /.row -->
+                        <!-- Service Paragraphs -->
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h2 class="page-header">#{immobilierBean.intitule}</h2>
+                                <p>#{immobilierBean.description}</p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h2 class="page-header">Price and Footage</h2>
+                                <p><span> <strong>Footage : </strong></span>#{immobilierBean.metrage}</p>
+                                <p><span><strong>Price : </strong></span>#{immobilierBean.prix}</p>
+                                <br/>
+                                <h:form>
+									<h:commandButton value="Take an Appointment" style="float:right;" class=" btn btn-primary " tabindex="7" action="#{immobilierBean.doAppointmentPage()}"/>
+								</h:form>	
+                            </div>
+
+                        </div><!-- /.row -->
+
+                        
+
+                       
+                        
+                    </div><!-- /.container -->
+                </ui:define>
+                <ui:define name="footer">
+                   
+                </ui:define>
+            </ui:composition>
+        </f:view>
+    </h:body>
+</html>
+

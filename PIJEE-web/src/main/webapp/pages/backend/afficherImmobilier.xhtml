@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template-admin.xhtml">
+	<ui:param name="TousLesimmobiliers" value="immobiliers" />
+	<ui:define name="content">
+		<h:panelGroup columns="2">
+			
+			<br />
+			<br />
+			<h:form>
+				<h:commandButton id="btn25555" value="Ajouter un Immobilier"
+					action="#{immobilierBean.addImmobilierPage()}" styleClass="btn btn-default" />
+					<h:commandButton id="btn555" value="Exporter PDF"
+					action="#{immobilierBean.pdfPage()}" styleClass="btn btn-default" />
+				<br />
+				<br />
+				<h:dataTable value="#{immobilierBean.immobiliers}" var="immobilier" border="1"
+					class="table table-bordered table-striped">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Catégorie" />
+						</f:facet>
+						<h:outputText value="#{immobilier.categorie}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Intitulé" />
+						</f:facet>
+						<h:outputText value="#{immobilier.intitule}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Description" />
+						</f:facet>
+						<h:outputText value="#{immobilier.description}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Adresse" />
+						</f:facet>
+						<h:outputText value="#{immobilier.adresse}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Métrage" />
+						</f:facet>
+						<h:outputText value="#{immobilier.metrage}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Prix" />
+						</f:facet>
+						<h:outputText value="#{immobilier.prix}" />
+					</h:column>
+					
+					<h:column>
+					<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton id="btn2555" value="Modifier"
+							action="#{immobilierBean.modifImmobilierPage(immobilier)}" >
+							</h:commandButton>
+					
+						<h:commandButton id="btn255" value="Supprimer"
+							action="#{immobilierBean.suppImmobilier(immobilier.id_immobilier)}" >
+							</h:commandButton>
+					</h:column>
+					
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

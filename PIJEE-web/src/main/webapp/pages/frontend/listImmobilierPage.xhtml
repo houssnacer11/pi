@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"     
+      xmlns:jsf="http://xmlns.jcp.org/jsf"    
+      xmlns:passthrough="http://xmlns.jcp.org/jsf/passthrough"     
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+    <h:body>
+        <f:view contracts="default" transient="false">
+            <ui:composition template="/template.xhtml">               
+                <ui:define name="content">
+
+                    <div class="container">
+
+
+
+
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <br />
+                                <br />
+                                <ol class="breadcrumb">
+                                    <li><a href="#">Home</a>
+                                    </li>
+                                    <li class="active">List Catalog</li>
+                                </ol>
+                            </div>
+
+                        </div>
+
+							<div class="col-lg-10">
+                                <div class="well">
+                                    <h4>Search by Address</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control"/>
+                                        <span class="input-group-btn">
+                                         <button class="btn btn-default"  type="button">
+                                           <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                        </span>
+                                    </div>
+                                    <!-- /input-group -->
+                                </div>
+                            
+                            </div>
+            
+                        <div class="row">
+          <!-- Begin Loop -->
+					<c:forEach var="immobilier" items="#{immobilierBean.immobiliers}">
+					
+                            <div class="col-lg-8" style="margin-left: 30px">
+								<div class="well">
+                                   
+                                    <div class="input-group">
+                                
+                                <a href="#">
+									<h:graphicImage height="400px" width="700px" value="/resources/image/#{immobilier.categorie}.jpg">
+									</h:graphicImage>
+									
+                                </a>
+                                <hr/>
+                                <h3><small>#{immobilier.categorie}</small></h3>
+                                <h2><stong>#{immobilier.intitule}</stong></h2>
+                                
+                                <p>#{immobilier.adresse}</p>
+                                
+								<h:form>
+									<h:commandButton value="View Details" style="float:right;" class=" btn btn-primary " tabindex="7" action="#{immobilierBean.doDetailsPage(immobilier.id_immobilier)}"/>
+								</h:form>								
+								<br/>
+								<hr/>								
+                            </div>
+                            </div>
+                            </div>
+                     </c:forEach>
+                             
+<!-- End Loop -->
+                            
+                            
+                        </div>
+                        
+                    </div>
+                </ui:define>
+            </ui:composition>
+        </f:view>
+    </h:body>
+</html>
+

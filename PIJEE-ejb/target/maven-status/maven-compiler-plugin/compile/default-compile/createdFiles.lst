@@ -1,0 +1,7 @@
+tn\pidev\entities\Role.class
+tn\pidev\interfaces\ICandidatRemote.class
+tn\pidev\entities\Candidat.class
+tn\pidev\impl\CandidatService.class
+tn\pidev\entities\Employe.class
+tn\pidev\interfaces\IEmployeRemote.class
+tn\pidev\impl\EmployeServiceImpl.class

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template-admin.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="ajout immobilier" value="Ajout Immobilier" />
+	<ui:define name="content">
+
+		<h:panelGroup columns="2">
+			<h:form styleClass="form-horizontal">
+				<br />
+				<br />
+				<p:messages id="msgs" />
+				<div class="form-group">
+				<p:outputLabel value="Catégories" for="categorie"
+						styleClass="control-label col-sm-2"></p:outputLabel>
+						<div class="col-sm-8">
+				<h:selectOneMenu  styleClass="form-control"  value="#{immobilierBean.value}" id="categorie" layout="lineDirection"> 
+					<f:selectItem itemLabel="Terrain" itemValue="TERRAIN" /> 
+					<f:selectItem itemLabel="Habitation" itemValue="HABITATION" /> 
+					<f:selectItem itemLabel="Bureau" itemValue="BUREAU" /> 
+					<f:selectItem itemLabel="Batiment" itemValue="BATIMENT" /> 
+				</h:selectOneMenu>
+				</div>
+				</div>
+				<p:message for="categorie" display="icon" />
+
+				<div class="form-group">
+					<p:outputLabel value="Intitulé" for="intitule"
+						styleClass="control-label col-sm-2"></p:outputLabel>
+					<div class="col-sm-8">
+						<h:inputText value="#{immobilierBean.intitule}" required="true"
+							id="intitule" styleClass="form-control">
+							
+							<f:validateLength minimum="2" />
+							
+						</h:inputText>
+						<p:watermark for="intitule" value="Intitulé" />
+					</div>
+				</div>
+				<p:message for="intitule" display="icon" />
+				
+				<div class="form-group">
+					<p:outputLabel value="Description" for="description"
+						styleClass="control-label col-sm-2"></p:outputLabel>
+					<div class="col-sm-8">
+						<h:inputText value="#{immobilierBean.description}" required="true"
+							id="description" styleClass="form-control">
+							<f:validateLength minimum="2" />
+							
+						</h:inputText>
+						<p:watermark for="description" value="Description" />
+					</div>
+				</div>
+				<p:message for="description" display="icon" />
+				
+				
+				<div class="form-group">
+					<p:outputLabel value="Adresse" for="adresse"
+						styleClass="control-label col-sm-2"></p:outputLabel>
+					<div class="col-sm-8">
+						<h:inputText value="#{immobilierBean.adresse}" required="true"
+							id="adresse" styleClass="form-control">
+							<f:validateLength minimum="2" />
+							
+						</h:inputText>
+						<p:watermark for="adresse" value="Adresse" />
+					</div>
+				</div>
+				<p:message for="adresse" display="icon" />
+
+				<div class="form-group">
+					<p:outputLabel value="Métrage" for="métrage"
+						styleClass="control-label col-sm-2"></p:outputLabel>
+					<div class="col-sm-8">
+						<h:inputText value="#{immobilierBean.metrage}" required="true"
+							id="métrage" styleClass="form-control">
+							<f:validateLength minimum="2" />
+							
+						</h:inputText>
+						<p:watermark for="métrage" value="Métrage" />
+					</div>
+				</div>
+				<p:message for="métrage" display="icon" />
+				
+				
+				
+				
+				<div class="form-group">
+					<p:outputLabel value="Prix" for="prix"
+						styleClass="control-label col-sm-2"></p:outputLabel>
+					<div class="col-sm-8">
+						<h:inputText value="#{immobilierBean.prix}" required="true"
+							id="prix" styleClass="form-control">
+							<f:validateLength minimum="2" />
+							
+						</h:inputText>
+						<p:watermark for="prix" value="Prix" />
+					</div>
+				</div>
+				<p:message for="prix" display="icon" />
+
+
+
+
+				
+
+			
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-8">
+						<c:choose>
+							<c:when test="#{immobilierBean.idToUpdate!=0}">
+								<h:commandButton value="Modifier Immobilier"
+									action="#{immobilierBean.updateImmobilier()}"
+									styleClass="btn btn-default" />
+							</c:when>
+							<c:otherwise>
+								<h:commandButton value="Ajouter Immobilier"
+									action="#{immobilierBean.addImmobilier()}"
+									styleClass="btn btn-default" />
+							</c:otherwise>
+						</c:choose>
+
+					</div>
+				</div>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

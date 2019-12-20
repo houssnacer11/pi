@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"     
+      xmlns:jsf="http://xmlns.jcp.org/jsf"    
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough" 
+      xmlns:b="http://bootsfaces.net/ui"    
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+    <h:body>
+        <f:view contracts="default" transient="false">
+            <ui:composition template="/template.xhtml">               
+                <ui:define name="content">
+                    <style>
+                        body { margin-top:20px; }
+                        .panel-title {display: inline;font-weight: bold;}
+                        .checkbox.pull-right { margin: 0; }
+                        .pl-ziro { padding-left: 0px; }
+                    </style>
+                    <div class="container">
+                        <br/>
+                        <h:form role="form">
+                        <div class="row">
+                            <div class="col-centered" style="margin-right: 300px;margin-left: 300px;">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" style="text-align: center;">
+                                        <h3 class="panel-title">
+                                            Appointment Details
+                                        </h3>
+                                       
+                                    </div>
+                                    <div class="panel-body">
+                                        
+                                            
+                                                <label for="date">
+                                                    Date Appointment</label>
+                                                
+                                                     <b:dateTimePicker value="#{rdvBean.date}"></b:dateTimePicker>
+                                                
+                                            
+                                            
+                                            
+                                                <label for="msg">
+                                                    Message</label>
+                                                
+                                                     <b:inputTextarea rows="5" value="#{rdvBean.message}"></b:inputTextarea>
+                                                
+                                            
+                                            
+                                        
+                                    </div>
+                                </div>
+                                
+                                
+                                
+									<h:commandButton value="Validate" style="float:right;" class="btn btn-info btn-lg btn-block" tabindex="7" action="#{rdvBean.addRdv(immobilierBean.idToUpdate,loginBean.id_login)}"/>
+								
+								
+								
+                            </div>
+                        </div>
+                        </h:form>
+                        
+                    </div>
+                   </ui:define>              
+
+            </ui:composition>
+        </f:view>
+    </h:body>
+    
+</html>
+
